@@ -32,7 +32,7 @@ public class AdapterForLive extends RecyclerView.Adapter<AdapterForLive.MyViewHo
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
+            title = (TextView) view.findViewById(R.id.list_item_recyclerview_category_title);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
 
         }

@@ -1,12 +1,14 @@
 package com.example.mehdi.kashmirobserver.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mehdi.kashmirobserver.R;
@@ -26,12 +28,10 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
-        public ImageView thumbnail;
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            thumbnail = (ImageView) view.findViewById(R.id.thumbnail_category);
+            title = (TextView) view.findViewById(R.id.list_item_recyclerview_category_title);
 
         }
     }
@@ -49,7 +49,14 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         news = allNews.get(position);
         holder.title.setText(news.getName());
-        Glide.with(mContext).load(news.getThumbnail()).into(holder.thumbnail);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "add", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 

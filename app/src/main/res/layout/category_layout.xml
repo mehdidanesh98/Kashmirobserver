@@ -4,14 +4,19 @@
     android:layout_height="match_parent"
     android:id="@+id/category_layout">
 
-
+    <FrameLayout
+        android:id="@+id/containerView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:layout_margin="10sp"
         android:scrollbars="horizontal" />
+    </FrameLayout>
 
 
 </RelativeLayout>
