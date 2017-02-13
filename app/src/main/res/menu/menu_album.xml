@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/action_add_favourite"
+        android:orderInCategory="100"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/action_index"
+        android:orderInCategory="101"
+        android:title="Help" />
+    <item
+        android:id="@+id/action_more"
+        android:orderInCategory="101"
+        android:title="..." />
+</menu>
