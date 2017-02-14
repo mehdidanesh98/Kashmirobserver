@@ -1,54 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="all"
-        >
+    <group android:checkableBehavior="all">
         <item
             android:id="@+id/nav_live"
-            android:title="LIVE"
-            android:icon="@drawable/live"/>
-        </group>
-    <group android:checkableBehavior="all"
-        >
+            android:title="LIVE" />
         <item
-            android:id="@+id/nav_category"
-            android:title="Category"
-            android:icon="@drawable/category"/>
-        <menu>
-            <item
-                android:id="@+id/nav_category_sport"
-                android:title="Sport"
-                android:icon="@drawable/sport1"/>
-            <item
+            android:id="@+id/nav_category_sport"
+            android:title="Sport" />
+        <item
             android:id="@+id/nav_category_health"
-            android:title="Health"
-            android:icon="@drawable/health"/>
-            <item
-                android:id="@+id/nav_category_politic"
-                android:title="Politic"
-                android:icon="@drawable/politic"/>
-            <item
-                android:id="@+id/nav_category_more"
-                android:title="..."
-                />
-            </menu>
-        </group>
-    <group>
+            android:title="Health" />
         <item
-            android:id="@+id/nav_more"
-            android:title="More"
-            />
-        <menu>
-            <item
-                android:id="@+id/nav_more1"
-                android:title="More"
-                android:icon="@drawable/more1"/>
-            <item
-                android:id="@+id/nav_about"
-                android:title="About us"
-                android:icon="@drawable/about"/>
-        </menu>
-
-        </group>
-
+            android:id="@+id/nav_category_politic"
+            android:title="Politic" />
+        <item
+            android:id="@+id/nav_more1"
+            android:title="More" />
+        <item
+            android:id="@+id/nav_about"
+            android:title="About us" />
+    </group>
 </menu>
