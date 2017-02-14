@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/action_search"
+        android:icon="@drawable/search"
+        android:actionViewClass="android.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom"
+        android:title="@string/action_settings" />
+    <item
+        android:id="@+id/action_setting"
+        app:showAsAction="never"
+        android:title="@string/title_activity_settings" />
+
+    <item
+        android:id="@+id/action_help"
+        app:showAsAction="never"
+        android:title="@string/action_help" />
 
 
 </menu>
