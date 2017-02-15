@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             logo.setVisibility(View.GONE);
 
             //add the close icon
-            mSearchAction.setIcon(getResources().getDrawable(R.drawable.close));
+            mSearchAction.setIcon(getResources().getDrawable(R.drawable.search));
 
             isSearchOpened = true;
         }
