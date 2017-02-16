@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.example.mehdi.kashmirobserver.View.CategoryAddFragment"
+    tools:context="com.example.mehdi.kashmirobserver.com.kashmirobserver.news.view.CategoryAddFragment"
     tools:listitem="@layout/fragment_item" />

@@ -1,4 +1,4 @@
-package com.example.mehdi.kashmirobserver.View;
+package com.kashmirobserver.news.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.example.mehdi.kashmirobserver.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyNewsFragment extends Fragment {
+public class PopularFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterForLive DisplayNews;
     private List<Model> allNews;

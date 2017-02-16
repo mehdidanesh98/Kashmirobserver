@@ -9,20 +9,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".View.MainActivity"
+            android:name="com.kashmirobserver.news.view.MainActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".View.DetailNews"
+            android:name="com.kashmirobserver.news.view.DetailNews"
             android:label="@string/title_activity_scrolling"
-            android:parentActivityName=".View.MainActivity"
+            android:parentActivityName="com.kashmirobserver.news.view.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
