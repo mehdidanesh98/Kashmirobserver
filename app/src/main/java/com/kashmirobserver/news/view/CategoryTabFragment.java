@@ -1,4 +1,4 @@
-package com.example.mehdi.kashmirobserver.View;
+package com.kashmirobserver.news.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,17 +13,17 @@ import android.view.ViewGroup;
 
 import com.example.mehdi.kashmirobserver.R;
 
-public class TabFragment extends Fragment {
+public class CategoryTabFragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 5;
+    public static int int_items = 2;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View x = inflater.inflate(R.layout.tab_layout, null);
+        View x = inflater.inflate(R.layout.category_tab_layout, null);
         tabLayout = (TabLayout) x.findViewById(R.id.tabs);
         viewPager = (ViewPager) x.findViewById(R.id.viewpager);
 
@@ -54,15 +54,10 @@ public class TabFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new LiveFragment();
+                    return new CategoryAddFragment();
                 case 1:
-                    return new FeatureFragment();
-                case 2:
-                    return new PopularFragment();
-                case 3:
-                    return new MyNewsFragment();
-                case 4:
-                    return new CategoryFragment();
+                    return new CategoryManageFragment();
+
 
 
             }
@@ -81,15 +76,10 @@ public class TabFragment extends Fragment {
 
             switch (position) {
                 case 0:
-                    return "LIVE";
+                    return "Add";
                 case 1:
-                    return "Feature";
-                case 2:
-                    return "Popular";
-                case 3:
-                    return "My News";
-                case 4:
-                    return "Category";
+                    return "Manage";
+
             }
             return null;
         }

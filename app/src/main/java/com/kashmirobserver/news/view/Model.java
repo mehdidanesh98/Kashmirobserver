@@ -1,4 +1,4 @@
-package com.example.mehdi.kashmirobserver.View;
+package com.kashmirobserver.news.view;
 
 /**
  * Created by Lincoln on 18/05/16.

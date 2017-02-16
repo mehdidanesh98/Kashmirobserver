@@ -1,9 +1,8 @@
-package com.example.mehdi.kashmirobserver.View;
+package com.kashmirobserver.news.view;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -16,7 +15,7 @@ import com.example.mehdi.kashmirobserver.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LiveFragment extends Fragment {
+public class MyNewsFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterForLive DisplayNews;
     private List<Model> allNews;

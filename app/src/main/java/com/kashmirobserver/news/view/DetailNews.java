@@ -1,4 +1,4 @@
-package com.example.mehdi.kashmirobserver.View;
+package com.kashmirobserver.news.view;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.mehdi.kashmirobserver.R;
 
