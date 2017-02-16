@@ -1,6 +1,7 @@
 package com.kashmirobserver.news.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -17,11 +18,20 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mehdi.kashmirobserver.R;
+import com.kashmirobserver.news.view.expanListview.CustomExpandableListAdapter;
+import com.kashmirobserver.news.view.expanListview.ExpandableListDataPump;
+import com.kashmirobserver.news.view.settings.SettingsActivity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
@@ -33,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtSeach;
     private ImageView logo;
 
+    ExpandableListView expandableListView;
+    ExpandableListAdapter expandableListAdapter;
+    List<String> expandableListTitle;
+    HashMap<String, List<String>> expandableListDetail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,51 +55,74 @@ public class MainActivity extends AppCompatActivity {
 
         DefinitionControl();
         NavigationView();
+        ExpandableListView();
 
     }
 
+    private void ExpandableListView()
+    {
+        expandableListView = (ExpandableListView) findViewById(R.id.navigationmenu);
+        expandableListDetail = ExpandableListDataPump.getData();
+        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+        expandableListView.setIndicatorBounds(expandableListView.getRight()- 40, expandableListView.getWidth());
+        expandableListView.setAdapter(expandableListAdapter);
+        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        expandableListTitle.get(groupPosition) ,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        expandableListTitle.get(groupPosition),
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        expandableListTitle.get(groupPosition)
+                                + " -> "
+                                + expandableListDetail.get(
+                                expandableListTitle.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT
+                ).show();
+                return false;
+            }
+        });
+    }
     private void DefinitionControl() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout1);
-        mNavigationView = (NavigationView) findViewById(R.id.shitstuff1);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         logo = (ImageView) findViewById(R.id.logo);
     }
-
     private void NavigationView() {
+
+        final ActionBar ab = getSupportActionBar();
+        /* to set the menu icon image*/
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout1);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
 
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
-
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                mDrawerLayout.closeDrawers();
-
-                FragmentTransaction fragmentTransaction;
-                switch (menuItem.getItemId()) {
-
-                    case R.id.nav_live:
-                        fragmentTransaction = mFragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
-                        break;
-//                    case R.id.nav_category:
-//                        Toast.makeText(MainActivity.this, "Category", Toast.LENGTH_SHORT).show();
-//
-//                        break;
-//                    case R.id.nav_more:
-//                        Toast.makeText(MainActivity.this, "More", Toast.LENGTH_SHORT).show();
-//
-//                        break;
-                    case R.id.nav_about:
-                        Toast.makeText(MainActivity.this, "About", Toast.LENGTH_SHORT).show();
-
-                        break;
-                }
-
-                return false;
-            }
-
-        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,7 +130,18 @@ public class MainActivity extends AppCompatActivity {
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name1, R.string.app_name1);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
-
+    }
+    private void setupDrawerContent(NavigationView navigationView) {
+        //revision: this don't works, use setOnChildClickListener() and setOnGroupClickListener() above instead
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
     }
 
 
@@ -109,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_settings:
-
+            case R.id.action_setting:
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
             case R.id.action_search:
                 handleMenuSearch();
@@ -167,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             logo.setVisibility(View.GONE);
 
             //add the close icon
-            mSearchAction.setIcon(getResources().getDrawable(R.drawable.search));
+            mSearchAction.setIcon(getResources().getDrawable(R.drawable.close));
 
             isSearchOpened = true;
         }

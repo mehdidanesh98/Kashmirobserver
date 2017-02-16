@@ -3,19 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
+        style="@style/AppTheme.AppBarOverlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorBackTab"
-        android:title=""
-        style="@style/AppTheme.AppBarOverlay"
         android:elevation="4dp"
+        android:title=""
 
         >
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
@@ -30,8 +30,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/drawerLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
 
         <FrameLayout
@@ -42,14 +41,21 @@
 
 
         <android.support.design.widget.NavigationView
-            android:id="@+id/shitstuff1"
+            android:id="@+id/nav_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="#000"
-            app:itemTextColor="#fff"
+            android:fitsSystemWindows="true">
 
-            app:menu="@menu/activity_main_drawer" />
+            <ExpandableListView
+                android:id="@+id/navigationmenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000"
+                android:divider="#222"
+                android:dividerHeight="1dp"
+                ></ExpandableListView>
+        </android.support.design.widget.NavigationView>
 
 
     </android.support.v4.widget.DrawerLayout>
