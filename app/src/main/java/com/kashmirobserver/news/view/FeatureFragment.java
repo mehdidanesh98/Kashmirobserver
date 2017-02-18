@@ -33,6 +33,7 @@ public class FeatureFragment extends Fragment {
 
 
         recyclerView.setAdapter(DisplayNews);
+        recyclerView.setFocusable(false);
         prepareModels();
 
         return rootView;

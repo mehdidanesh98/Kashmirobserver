@@ -24,8 +24,8 @@
             android:parentActivityName="com.kashmirobserver.news.view.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.kashmirobserver.news.view.settings.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:name="com.kashmirobserver.news.view.settings.Settings"
+            android:label="@string/title_activity_setting"></activity>
     </application>
 
 </manifest>

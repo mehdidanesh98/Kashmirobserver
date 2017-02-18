@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 
 import com.example.mehdi.kashmirobserver.R;
 
@@ -33,6 +34,7 @@ public class MyNewsFragment extends Fragment {
 
 
         recyclerView.setAdapter(DisplayNews);
+        recyclerView.setFocusable(false);
         prepareModels();
 
         return rootView;

@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.example.mehdi.kashmirobserver.R;
 import com.kashmirobserver.news.view.expanListview.CustomExpandableListAdapter;
 import com.kashmirobserver.news.view.expanListview.ExpandableListDataPump;
-import com.kashmirobserver.news.view.settings.SettingsActivity;
+import com.kashmirobserver.news.view.settings.Settings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_setting:
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            startActivity(new Intent(MainActivity.this, Settings.class));
                 return true;
             case R.id.action_search:
                 handleMenuSearch();
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             logo.setVisibility(View.GONE);
 
             //add the close icon
-            mSearchAction.setIcon(getResources().getDrawable(R.drawable.close));
+            mSearchAction.setIcon(getResources().getDrawable(R.drawable.search));
 
             isSearchOpened = true;
         }
