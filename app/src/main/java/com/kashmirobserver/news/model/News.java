@@ -7,8 +7,13 @@ package com.kashmirobserver.news.model;
 public class News {
     public String title;
     public String text;
-    public String img;
+    public int img;
     public String date;
+
+    public News(String title,int img){
+        this.title=title;
+        this.img=img;
+    }
 
     public String getdate() {
         return date;
@@ -17,11 +22,11 @@ public class News {
     public void setdate(String value) {
         this.date = value;
     }
-    public String getimg() {
+    public int getimg() {
         return img;
     }
 
-    public void setimg(String value) {
+    public void setimg(int value) {
         this.img = value;
     }
     public String gettext() {

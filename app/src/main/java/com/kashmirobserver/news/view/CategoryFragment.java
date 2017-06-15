@@ -8,11 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.mehdi.kashmirobserver.R;
+import com.kashmirobserver.news.model.category;
 
 import java.util.List;
 
 public class CategoryFragment extends Fragment {
-    private List<Model> CatNews;
+    private List<category> CatNews;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 

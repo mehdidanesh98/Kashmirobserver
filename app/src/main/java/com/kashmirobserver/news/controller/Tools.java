@@ -29,7 +29,7 @@ public class Tools {
 	}
 	
 
-	public static boolean fileExit(Context context, String fileName) {
+	public static boolean fileExists(Context context, String fileName) {
 		File file = context.getFileStreamPath(fileName);
 		return file.exists();
 	}

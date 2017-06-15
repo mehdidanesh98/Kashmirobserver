@@ -9,9 +9,10 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 
 import com.example.mehdi.kashmirobserver.R;
+import com.kashmirobserver.news.model.News;
+import com.kashmirobserver.news.model.category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,23 +20,20 @@ import java.util.List;
 public class MyNewsFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterForLive DisplayNews;
-    private List<Model> allNews;
+    private List<News> allNews;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.live_layout, null);
 
         allNews = new ArrayList<>();
+        prepareModels();
         DisplayNews = new AdapterForLive(getActivity(), allNews);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view_live);
-        int mNoOfColumns = Utility.calculateNoOfColumns(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
         recyclerView.setAdapter(DisplayNews);
-        recyclerView.setFocusable(false);
-        prepareModels();
 
         return rootView;
     }
@@ -63,28 +61,27 @@ public class MyNewsFragment extends Fragment {
                 R.drawable.pic7,
         };
 
-        Model a = new Model("True Romance", covers[0]);
+        News a = new News("True Romance", covers[0]);
         allNews.add(a);
 
-        a = new Model("Xscpae", covers[1]);
+        a = new News("Xscpae", covers[1]);
         allNews.add(a);
 
-        a = new Model("Maroon 5", covers[2]);
+        a = new News("Maroon 5", covers[2]);
         allNews.add(a);
 
-        a = new Model("Born to Die", covers[3]);
+        a = new News("Born to Die", covers[3]);
         allNews.add(a);
 
-        a = new Model("Honeymoon", covers[4]);
+        a = new News("Honeymoon", covers[4]);
         allNews.add(a);
 
-        a = new Model("I Need a Doctor", covers[5]);
+        a = new News("I Need a Doctor", covers[5]);
         allNews.add(a);
 
-        a = new Model("Loud", covers[6]);
+        a = new News("Loud", covers[6]);
         allNews.add(a);
 
-        DisplayNews.notifyDataSetChanged();
     }
 
 }
