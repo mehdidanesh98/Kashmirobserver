@@ -10,8 +10,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.mehdi.kashmirobserver.R;
+import com.kashmirobserver.news.model.category;
 
 public class CategoryTabFragment extends Fragment {
 
@@ -35,7 +37,6 @@ public class CategoryTabFragment extends Fragment {
         });
 
         return x;
-
     }
 
     @Override
@@ -44,7 +45,7 @@ public class CategoryTabFragment extends Fragment {
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
     }
 
-    class MyAdapter extends FragmentPagerAdapter {
+    class MyAdapter extends FragmentPagerAdapter{
 
         public MyAdapter(FragmentManager fm) {
             super(fm);
@@ -57,8 +58,6 @@ public class CategoryTabFragment extends Fragment {
                     return new CategoryAddFragment();
                 case 1:
                     return new CategoryManageFragment();
-
-
 
             }
             return null;

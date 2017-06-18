@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list"
-    android:name="com.example.mehdi.kashmirobserver.View.CategoryAddFragment"
+    android:name="com.kashmirobserver.View.CategoryAddFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.example.mehdi.kashmirobserver.com.kashmirobserver.news.view.CategoryAddFragment"
+    tools:context="com.kashmirobserver.news.view.CategoryAddFragment"
     tools:listitem="@layout/fragment_item" />

@@ -1,12 +1,11 @@
 package com.kashmirobserver.news.controller;
 
-import com.kashmirobserver.news.model.News;
+import com.kashmirobserver.news.model.RSS;
 
-import java.util.List;
-
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -16,13 +15,19 @@ import retrofit2.http.Path;
 
 public interface NewsServices {
     @GET("{cat}/{owner}/app")
-    Call<List<News>> repoContributors(
+    Call<RSS> repoContributors(
             @Path("cat") String cat,
             @Path("owner") String owner);
 
 
-    public static final Retrofit retrofit = new Retrofit.Builder()
+//    public static final Retrofit retrofit = new Retrofit.Builder()
+//            .baseUrl("https://kashmirobserver.net/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build();
+
+    public static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://kashmirobserver.net/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .client(new OkHttpClient())
+            .addConverterFactory(SimpleXmlConverterFactory.create())
             .build();
 }

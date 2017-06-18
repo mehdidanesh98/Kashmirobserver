@@ -28,7 +28,7 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
     private List<category> allcat;
     private int prePosition = 0;
 
-    public AdapterForCategory(Context mContext, List<category> cats) {
+    public AdapterForCategory(Context mContext, List<category> cats,boolean mode) {
         this.mContext = mContext;
         this.inflater = LayoutInflater.from(mContext);
         this.allcat = cats;
@@ -85,17 +85,17 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
         notifyItemRangeChanged(position, allcat.size());
 
         Gson gson = new Gson();
-        Categories categories=new Categories();
-        categories.categories=(ArrayList<category>) allcat;
+        Categories categories = new Categories();
+        categories.categories = (ArrayList<category>) allcat;
 
-        LocalStorge localStorge=new LocalStorge(mContext);
-        localStorge.Setstr(Constant.LS_ADD_CAT,gson.toJson(categories));
+        LocalStorge localStorge = new LocalStorge(mContext);
+        localStorge.Setstr(Constant.LS_ADD_CAT, gson.toJson(categories));
 
-        categories = gson.fromJson(localStorge.getstr(Constant.LS_MANAGE_CAT),Categories.class);
-        if(categories==null)
-            categories=new Categories();
+        categories = gson.fromJson(localStorge.getstr(Constant.LS_MANAGE_CAT), Categories.class);
+        if (categories == null)
+            categories = new Categories();
         categories.categories.add(AddCat);
-        localStorge.Setstr(Constant.LS_MANAGE_CAT,gson.toJson(categories));
+        localStorge.Setstr(Constant.LS_MANAGE_CAT, gson.toJson(categories));
     }
 
     @Override
