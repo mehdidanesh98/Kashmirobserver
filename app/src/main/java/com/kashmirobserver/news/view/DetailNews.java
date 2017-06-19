@@ -26,6 +26,8 @@ public class DetailNews extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imgbanner);
         banner = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         banner.setContentScrimColor(getResources().getColor(R.color.colorBackTab));
+        banner.setExpandedTitleColor(getResources().getColor(R.color.cardview_light_background));
+        banner.setCollapsedTitleTextColor(getResources().getColor(R.color.cardview_light_background));
         Bundle bundle = getIntent().getExtras();
         String Title = bundle.getString("nameNews");
         int pos = bundle.getInt("pos",1);
@@ -44,5 +46,9 @@ public class DetailNews extends AppCompatActivity {
         final MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.menu_album, popup.getMenu());
         popup.show();
+    }
+    public void back(View v)
+    {
+        finish();
     }
 }

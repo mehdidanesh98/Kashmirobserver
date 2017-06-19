@@ -2,6 +2,9 @@ package com.kashmirobserver.news.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -10,8 +13,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,10 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mehdi.kashmirobserver.R;
-import com.kashmirobserver.news.controller.NewsServices;
-import com.kashmirobserver.news.controller.Tools;
-import com.kashmirobserver.news.model.Channel;
-import com.kashmirobserver.news.model.RSS;
 import com.kashmirobserver.news.view.expanListview.CustomExpandableListAdapter;
 import com.kashmirobserver.news.view.expanListview.ExpandableListDataPump;
 import com.kashmirobserver.news.view.settings.Settings;
@@ -38,11 +37,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class MainActivity extends AppCompatActivity {
+
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
@@ -51,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isSearchOpened = false;
     private EditText edtSeach;
     private ImageView logo;
-
+    private Toolbar toolbar;
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
@@ -59,29 +55,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         DefinitionControl();
         NavigationView();
         ExpandableListView();
-
     }
 
-    private void ExpandableListView()
-    {
+
+    private void ExpandableListView() {
         expandableListView = (ExpandableListView) findViewById(R.id.navigationmenu);
         expandableListDetail = ExpandableListDataPump.getData();
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
-        expandableListView.setIndicatorBounds(expandableListView.getRight()- 40, expandableListView.getWidth());
+        expandableListView.setIndicatorBounds(expandableListView.getRight() - 40, expandableListView.getWidth());
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
             public void onGroupExpand(int groupPosition) {
                 Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) ,
+                        expandableListTitle.get(groupPosition),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -113,11 +109,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void DefinitionControl() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout1);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         logo = (ImageView) findViewById(R.id.logo);
+
     }
+
     private void NavigationView() {
 
         final ActionBar ab = getSupportActionBar();
@@ -133,13 +132,15 @@ public class MainActivity extends AppCompatActivity {
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name1, R.string.app_name1);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
     }
+
     private void setupDrawerContent(NavigationView navigationView) {
         //revision: this don't works, use setOnChildClickListener() and setOnGroupClickListener() above instead
         navigationView.setNavigationItemSelectedListener(
@@ -156,6 +157,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        for(int i = 0; i < menu.size(); i++) {
+            Drawable drawable = menu.getItem(i).getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(getResources().getColor(R.color.cardview_light_background), PorterDuff.Mode.SRC_ATOP);
+            }
+        }
         getMenuInflater().inflate(R.menu.main, menu);
         mSearchAction = menu.findItem(R.id.action_search);
         return super.onPrepareOptionsMenu(menu);
@@ -165,10 +173,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch (id) {
             case R.id.action_setting:
-            startActivity(new Intent(MainActivity.this, Settings.class));
+                startActivity(new Intent(MainActivity.this, Settings.class));
                 return true;
             case R.id.action_search:
                 handleMenuSearch();
@@ -202,6 +209,9 @@ public class MainActivity extends AppCompatActivity {
             action.setDisplayShowTitleEnabled(false); //hide the title
 
             edtSeach = (EditText) action.getCustomView().findViewById(R.id.edtSearch); //the text editor
+
+            edtSeach.setHint("Search news...");
+            edtSeach.setTextColor(Color.WHITE);
 
             //this is a listener to do a search when the user clicks on search button
             edtSeach.setOnEditorActionListener(new TextView.OnEditorActionListener() {

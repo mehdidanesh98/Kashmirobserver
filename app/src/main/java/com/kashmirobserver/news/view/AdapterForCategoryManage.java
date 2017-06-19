@@ -21,23 +21,21 @@ import com.kashmirobserver.news.model.category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.MyViewHolder> {
+public class AdapterForCategoryManage extends RecyclerView.Adapter<AdapterForCategoryManage.MyViewHolder> {
 
     private Context mContext;
     private LayoutInflater inflater;
     private List<category> allcat;
     private int prePosition = 0;
-    private boolean mode;
 
-    public AdapterForCategory(Context mContext, List<category> cats, boolean mode) {
+    public AdapterForCategoryManage(Context mContext, List<category> cats, boolean mode) {
         this.mContext = mContext;
         this.inflater = LayoutInflater.from(mContext);
         this.allcat = cats;
-        this.mode=mode;
     }
 
     @Override
-    public AdapterForCategory.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterForCategoryManage.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = inflater.inflate(R.layout.list_item_recyclerview_category, parent, false);
         MyViewHolder holder = new MyViewHolder(itemView);
         return holder;
@@ -46,20 +44,16 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.title.setText(allcat.get(position).getName());
-        if (mode)
-            holder.img.setImageResource(R.drawable.add_category);
-        else
-            holder.img.setImageResource(R.drawable.remove_category);
-
+        holder.img.setImageResource(R.drawable.add_category);
         if (allcat.get(position).getParent().equalsIgnoreCase("")) {
             holder.img.setVisibility(View.GONE);
-            holder.itemView.setEnabled(false);
             holder.title.setTextSize(18);
             holder.title.setTextColor(Color.parseColor("#000000"));
             holder.title.setHeight(120);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Toast.makeText(mContext, allcat.get(position).getName(), Toast.LENGTH_SHORT).show();
                 }
             });
         } else {

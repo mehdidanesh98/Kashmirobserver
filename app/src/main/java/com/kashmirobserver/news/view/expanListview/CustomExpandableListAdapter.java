@@ -93,7 +93,12 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
         if (!listTitle.equals("LIVE"))
-            ic_extendListview.setImageResource(R.drawable.search);
+        {
+            if (isExpanded)
+                ic_extendListview.setImageResource(R.drawable.arrow_open);
+            else
+                ic_extendListview.setImageResource(R.drawable.arrow_close);
+        }
         return convertView;
     }
 

@@ -6,24 +6,30 @@
         <item name="colorPrimary">@color/colorBackTab</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:direction">left_to_right</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:direction">left_to_right</item>
     </style>
 
     <style name="AppTheme.NavigationView">
         <item name="android:listDivider">@android:color/background_light</item>
         <item name="android:textColorSecondary">@android:color/background_light</item>
         <item name="android:textSize">@dimen/nav_text_size</item>
+        <item name="android:direction">left_to_right</item>
 
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:textColorPrimary">#fa0</item>
-        </style>
+        <item name="android:direction">left_to_right</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:direction">left_to_right</item>
+    </style>
 
 </resources>

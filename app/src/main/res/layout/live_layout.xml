@@ -10,7 +10,7 @@
 
 
 
-    <include layout="@layout/live"
+    <include layout="@layout/activity_mynews"
          />
 
 </android.support.design.widget.CoordinatorLayout>
