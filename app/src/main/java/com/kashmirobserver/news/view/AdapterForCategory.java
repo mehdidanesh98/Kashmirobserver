@@ -33,7 +33,7 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
         this.mContext = mContext;
         this.inflater = LayoutInflater.from(mContext);
         this.allcat = cats;
-        this.mode=mode;
+        this.mode = mode;
     }
 
     @Override
@@ -57,22 +57,19 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
             holder.title.setTextSize(18);
             holder.title.setTextColor(Color.parseColor("#000000"));
             holder.title.setHeight(120);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                }
-            });
         } else {
-            holder.title.setTextColor(Color.parseColor("#212121"));
             holder.img.setVisibility(View.VISIBLE);
+            holder.title.setTextColor(Color.parseColor("#212121"));
             holder.title.setTextSize(13);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(mContext, allcat.get(position).getName() + " added to My news", Toast.LENGTH_SHORT).show();
-                    removeAt(position);
-                }
-            });
+            if(mode) {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, allcat.get(position).getName() + " added to My news", Toast.LENGTH_SHORT).show();
+                        removeAt(position);
+                    }
+                });
+            }
         }
 
         if (position > prePosition) {

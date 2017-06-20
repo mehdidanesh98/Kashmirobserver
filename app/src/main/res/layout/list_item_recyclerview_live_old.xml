@@ -20,7 +20,7 @@
                 android:layout_height="200dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:src="@drawable/pic7"
+                android:src="@drawable/pic1"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY" />
 

@@ -9,10 +9,15 @@ public class News {
     public String text;
     public int img;
     public String date;
+    public String pic;
+    public  String author;
 
     public News(String title,int img){
         this.title=title;
         this.img=img;
+    }
+
+    public News(){
     }
 
     public String getdate() {

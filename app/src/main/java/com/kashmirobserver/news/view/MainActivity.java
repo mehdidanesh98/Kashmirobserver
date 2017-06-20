@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_setting:
-                startActivity(new Intent(MainActivity.this, Settings.class));
+                //startActivity(new Intent(MainActivity.this, Settings.class));
                 return true;
             case R.id.action_search:
                 handleMenuSearch();
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
             imm.hideSoftInputFromWindow(edtSeach.getWindowToken(), 0);
 
             //add the search icon in the action bar
-            mSearchAction.setIcon(getResources().getDrawable(R.drawable.search));
+            mSearchAction.setIcon(getResources().getDrawable(R.drawable.logo));
             logo.setVisibility(View.VISIBLE);
 
             isSearchOpened = false;
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
             logo.setVisibility(View.GONE);
 
             //add the close icon
-            mSearchAction.setIcon(getResources().getDrawable(R.drawable.search));
+            mSearchAction.setIcon(getResources().getDrawable(R.drawable.logo));
 
             isSearchOpened = true;
         }
