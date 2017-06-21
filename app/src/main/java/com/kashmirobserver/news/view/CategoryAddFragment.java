@@ -13,12 +13,13 @@ import com.example.mehdi.kashmirobserver.R;
 import com.kashmirobserver.news.controller.CategoryManagment;
 import com.kashmirobserver.news.model.category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAddFragment extends Fragment {
     private RecyclerView recyclerView;
-    private AdapterForCategory DisplayNews;
-    private List<category> allNews;
+    private AdapterForCategoryAdd DisplayNews;
+    private ArrayList<category> allNews;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class CategoryAddFragment extends Fragment {
 
     public void RefreshList(){
         allNews = CategoryManagment.getAddCategory(getContext());
-        DisplayNews = new AdapterForCategory(getActivity(), allNews, true);
+        DisplayNews = new AdapterForCategoryAdd(getActivity(), allNews);
         recyclerView.setAdapter(DisplayNews);
     }
 

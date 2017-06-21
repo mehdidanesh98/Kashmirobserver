@@ -40,16 +40,17 @@ public class DetailNews extends AppCompatActivity {
         banner.setCollapsedTitleTextColor(getResources().getColor(R.color.cardview_light_background));
 
         Bundle bundle = getIntent().getExtras();
-        String value = bundle.getString(Constant.DETAIL_NEWS);
+        if(bundle != null) {
+            String value = bundle.getString(Constant.DETAIL_NEWS);
 
-        Gson gson = new Gson();
-        News news = gson.fromJson(value, News.class);
+            Gson gson = new Gson();
+            News news = gson.fromJson(value, News.class);
 
-        banner.setTitle(news.title);
-        Glide.with(getApplicationContext()).load(news.pic).into(imageView);
-        //Log.d("Test Text", news.text);
-        textView.setText(Html.fromHtml(news.text));
-
+            banner.setTitle(news.title);
+            Glide.with(getApplicationContext()).load(news.pic).into(imageView);
+            //Log.d("Test Text", news.text);
+            textView.setText(Html.fromHtml(news.text));
+        }
     }
 
     public void moreMenu(View v) {

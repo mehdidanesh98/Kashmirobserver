@@ -12,12 +12,14 @@ import android.view.ViewGroup;
 import com.example.mehdi.kashmirobserver.R;
 import com.kashmirobserver.news.controller.CategoryManagment;
 import com.kashmirobserver.news.model.category;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryManageFragment extends Fragment {
     private RecyclerView recyclerView;
-    private AdapterForCategory DisplayNews;
-    public static List<category> cats;
+    private AdapterForCategoryMan DisplayNews;
+    public static ArrayList<category> cats;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class CategoryManageFragment extends Fragment {
 
     public void RefreshList() {
         cats = CategoryManagment.getManCategory(getContext());
-        DisplayNews = new AdapterForCategory(getActivity(), cats, false);
+        DisplayNews = new AdapterForCategoryMan(getActivity(), cats);
         recyclerView.setAdapter(DisplayNews);
     }
 

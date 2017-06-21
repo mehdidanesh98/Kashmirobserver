@@ -21,23 +21,21 @@ import com.kashmirobserver.news.model.category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.MyViewHolder> {
+public class AdapterForCategoryMan extends RecyclerView.Adapter<AdapterForCategoryMan.MyViewHolder> {
 
     private Context mContext;
     private LayoutInflater inflater;
-    private List<category> allcat;
+    private ArrayList<category> allcat;
     private int prePosition = 0;
-    private boolean mode;
 
-    public AdapterForCategory(Context mContext, List<category> cats, boolean mode) {
+    public AdapterForCategoryMan(Context mContext, ArrayList<category> cats) {
         this.mContext = mContext;
         this.inflater = LayoutInflater.from(mContext);
         this.allcat = cats;
-        this.mode = mode;
     }
 
     @Override
-    public AdapterForCategory.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterForCategoryMan.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = inflater.inflate(R.layout.list_item_recyclerview_category, parent, false);
         MyViewHolder holder = new MyViewHolder(itemView);
         return holder;
@@ -46,31 +44,17 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.title.setText(allcat.get(position).getName());
-        if (mode)
-            holder.img.setImageResource(R.drawable.add_category);
-        else
-            holder.img.setImageResource(R.drawable.remove_category);
-
-        if (allcat.get(position).getParent().equalsIgnoreCase("")) {
-            holder.img.setVisibility(View.GONE);
-            holder.itemView.setEnabled(false);
-            holder.title.setTextSize(18);
-            holder.title.setTextColor(Color.parseColor("#000000"));
-            holder.title.setHeight(120);
-        } else {
-            holder.img.setVisibility(View.VISIBLE);
-            holder.title.setTextColor(Color.parseColor("#212121"));
-            holder.title.setTextSize(13);
-            if(mode) {
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(mContext, allcat.get(position).getName() + " added to My news", Toast.LENGTH_SHORT).show();
-                        removeAt(position);
-                    }
-                });
+        holder.img.setImageResource(R.drawable.remove_category);
+        holder.img.setVisibility(View.VISIBLE);
+        holder.title.setTextColor(Color.parseColor("#212121"));
+        holder.title.setTextSize(13);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, allcat.get(position).getName() + " removed of My news", Toast.LENGTH_SHORT).show();
+                removeAt(position);
             }
-        }
+        });
 
         if (position > prePosition) {
             new AnimationUtils().animate(holder, true);
@@ -89,16 +73,19 @@ public class AdapterForCategory extends RecyclerView.Adapter<AdapterForCategory.
 
         Gson gson = new Gson();
         Categories categories = new Categories();
-        categories.categories = (ArrayList<category>) allcat;
+        categories.categories =  allcat;
 
         LocalStorge localStorge = new LocalStorge(mContext);
-        localStorge.Setstr(Constant.LS_ADD_CAT, gson.toJson(categories));
-
-        categories = gson.fromJson(localStorge.getstr(Constant.LS_MANAGE_CAT), Categories.class);
-        if (categories == null)
-            categories = new Categories();
-        categories.categories.add(AddCat);
         localStorge.Setstr(Constant.LS_MANAGE_CAT, gson.toJson(categories));
+
+        categories = gson.fromJson(localStorge.getstr(Constant.LS_ADD_CAT), Categories.class);
+        for (int i = 0; i < categories.categories.size(); i++) {
+            if (categories.categories.get(i).getName().equalsIgnoreCase(AddCat.getParent())) {
+                categories.categories.add((i + 1), AddCat);
+                break;
+            }
+        }
+        localStorge.Setstr(Constant.LS_ADD_CAT, gson.toJson(categories));
     }
 
     @Override

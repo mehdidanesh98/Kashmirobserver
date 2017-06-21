@@ -3,6 +3,7 @@ package com.kashmirobserver.news.view;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,6 @@ public class AdapterForLive extends RecyclerView.Adapter<AdapterForLive.MyViewHo
     private Context mContext;
     private LayoutInflater inflater;
     private List<News> allNews;
-    private News news;
     private int prePosition = 0;
 
     public AdapterForLive(Context mContext, List<News> allNews) {
@@ -41,20 +41,18 @@ public class AdapterForLive extends RecyclerView.Adapter<AdapterForLive.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        news = allNews.get(position);
-        holder.title.setText(news.gettitle());
-        holder.date.setText(news.date);
+        holder.title.setText(allNews.get(position).gettitle());
+        holder.date.setText(allNews.get(position).date);
         holder.category.setText("In Depth");
 
         // loading album cover using Glide library
-        Glide.with(mContext).load(news.pic).into(holder.thumbnail);
+        Glide.with(mContext).load(allNews.get(position).pic).error(R.drawable.remove_category).into(holder.thumbnail);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Gson gson = new Gson();
                 Intent intent = new Intent(mContext, DetailNews.class);
-                intent.putExtra(Constant.DETAIL_NEWS, gson.toJson(news));
-
+                intent.putExtra(Constant.DETAIL_NEWS, gson.toJson(allNews.get(position)));
                 mContext.startActivity(intent);
             }
         });
@@ -74,7 +72,6 @@ public class AdapterForLive extends RecyclerView.Adapter<AdapterForLive.MyViewHo
     public int getItemCount() {
         return allNews.size();
     }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, date, category;
