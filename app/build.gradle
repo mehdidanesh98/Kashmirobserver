@@ -48,5 +48,4 @@ dependencies {
         exclude group: 'stax', module: 'stax'
     }
     compile 'com.google.code.gson:gson:2.2.4'
-    compile 'com.github.curioustechizen.android-ago:library:1.3.4'
 }
