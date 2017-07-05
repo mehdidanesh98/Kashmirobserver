@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_setting:
-                //startActivity(new Intent(MainActivity.this, Settings.class));
+                startActivity(new Intent(MainActivity.this, Settings.class));
                 return true;
             case R.id.action_search:
                 handleMenuSearch();

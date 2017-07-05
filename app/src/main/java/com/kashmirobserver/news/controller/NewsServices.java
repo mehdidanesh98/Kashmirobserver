@@ -14,10 +14,9 @@ import retrofit2.http.Path;
  */
 
 public interface NewsServices {
-    @GET("{cat}/{owner}/app")
+    @GET("{cat}/app")
     Call<RSS> repoContributors(
-            @Path("cat") String cat,
-            @Path("owner") String owner);
+            @Path("cat") String cat);
 
 
 //    public static final Retrofit retrofit = new Retrofit.Builder()

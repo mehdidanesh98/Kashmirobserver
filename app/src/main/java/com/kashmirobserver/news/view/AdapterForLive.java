@@ -43,10 +43,10 @@ public class AdapterForLive extends RecyclerView.Adapter<AdapterForLive.MyViewHo
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.title.setText(allNews.get(position).gettitle());
         holder.date.setText(allNews.get(position).date);
-        holder.category.setText("In Depth");
+        holder.category.setText(allNews.get(position).cat);
 
         // loading album cover using Glide library
-        Glide.with(mContext).load(allNews.get(position).pic).error(R.drawable.remove_category).into(holder.thumbnail);
+        Glide.with(mContext).load(allNews.get(position).pic).error(R.drawable.error_pic).into(holder.thumbnail);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +65,10 @@ public class AdapterForLive extends RecyclerView.Adapter<AdapterForLive.MyViewHo
         }
 
         prePosition = position;
+
+    }
+
+    private void ShowMore(){
 
     }
 

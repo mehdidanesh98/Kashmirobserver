@@ -81,7 +81,7 @@ public class AdapterForCategoryManage extends RecyclerView.Adapter<AdapterForCat
 
     public void removeAt(int position) {
         category AddCat = allcat.remove(position);
-        notifyItemRemoved(position);
+        notifyItemChanged(position);
         notifyItemRangeChanged(position, allcat.size());
 
         Gson gson = new Gson();

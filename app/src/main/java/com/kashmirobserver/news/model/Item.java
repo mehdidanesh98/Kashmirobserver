@@ -25,6 +25,8 @@ public class Item implements Parcelable {
     @Element(name = "enclosure")
     public Enclosure enclosure;
 
+    @Element(name = "source")
+    public Source source;
 
     public String src;
 
@@ -95,7 +97,6 @@ public class Item implements Parcelable {
     public void setSrc(String src) {
         this.src = src;
     }
-
 
     @Override
     public int describeContents() {

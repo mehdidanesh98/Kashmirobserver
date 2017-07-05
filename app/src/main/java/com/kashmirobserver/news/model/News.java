@@ -11,6 +11,7 @@ public class News {
     public String date;
     public String pic;
     public  String author;
+    public String cat;
 
     public News(String title,int img){
         this.title=title;

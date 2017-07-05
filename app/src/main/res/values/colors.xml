@@ -6,7 +6,10 @@
     <color name="colorBackToolbar">#0A0A0A</color>
     <color name="colorBackTab">#CC0000</color>
     <color name="colorTextTab">#fff</color>
-
+    <color name="background">#f5eeee</color>
+    <color name="bac_setting_network_btn_green">#009688</color>
+    <color name="bac_detail_shenasname_btn_red">#ff0000</color>
+    <color name="text_color_empty">#8b8b8b</color>
 
 
 </resources>
