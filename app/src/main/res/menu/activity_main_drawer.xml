@@ -4,7 +4,7 @@
     <group android:checkableBehavior="all">
         <item
             android:id="@+id/nav_live"
-            android:title="LIVE" />
+            android:title="My News" />
         <item
             android:id="@+id/nav_category_sport"
             android:title="Sport" />

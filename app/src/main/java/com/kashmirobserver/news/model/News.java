@@ -12,6 +12,7 @@ public class News {
     public String pic;
     public  String author;
     public String cat;
+    public String link;
 
     public News(String title,int img){
         this.title=title;

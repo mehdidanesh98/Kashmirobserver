@@ -19,6 +19,9 @@ public class Item implements Parcelable {
     @Element(name = "title")
     public String title;
 
+    @Element(name = "link")
+    public String link;
+
     @Element(name = "description")
     public String description;
 

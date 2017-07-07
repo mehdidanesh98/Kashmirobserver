@@ -103,6 +103,7 @@ public class CategoryManagment {
                 news.pic = item.enclosure.url;
                 news.img = R.drawable.pic1;
                 news.text = item.description;
+                news.link = "https://kashmirobserver.net"+item.link;
                 int endtChar = item.source.url.lastIndexOf("/app");
                 int startChar = item.source.url.lastIndexOf("/", endtChar - 1);
                 news.cat = item.source.url.substring(startChar+1,endtChar).toUpperCase();

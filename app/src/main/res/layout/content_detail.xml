@@ -15,6 +15,7 @@
         android:id="@+id/detail_text"
         android:textSize="25px"
         android:fontFamily="sans-serif-condensed"
+        android:lineSpacingExtra="10px"
         android:text="@string/large_text" />
 
 </android.support.v4.widget.NestedScrollView>

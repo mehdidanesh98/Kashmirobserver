@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mehdi.kashmirobserver.R;
 
@@ -94,9 +93,9 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         listTitleTextView.setText(listTitle);
         if (!listTitle.equals("LIVE"))
         {
-            if (isExpanded)
-                ic_extendListview.setImageResource(R.drawable.arrow_open);
-            else
+//            if (isExpanded)
+//                ic_extendListview.setImageResource(R.drawable.arrow_open);
+//            else
                 ic_extendListview.setImageResource(R.drawable.arrow_close);
         }
         return convertView;

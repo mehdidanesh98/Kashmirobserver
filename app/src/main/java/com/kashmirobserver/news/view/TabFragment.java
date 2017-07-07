@@ -33,7 +33,7 @@ public class TabFragment extends Fragment {
         View x = inflater.inflate(R.layout.tab_layout, null);
         tabLayout = (TabLayout) x.findViewById(R.id.tabs);
         viewPager = (ViewPager) x.findViewById(R.id.viewpager);
-
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.post(new Runnable() {
             @Override
             public void run() {

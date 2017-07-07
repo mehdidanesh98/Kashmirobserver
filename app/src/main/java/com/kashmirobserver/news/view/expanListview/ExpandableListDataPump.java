@@ -12,20 +12,20 @@ public class ExpandableListDataPump {
 
 
         List<String> popular = new ArrayList<String>();
-        popular.add("Sport");
-        popular.add("Politic");
-        popular.add("Science");
+//        popular.add("Sport");
+//        popular.add("Politic");
+//        popular.add("Science");
 
         List<String> feature = new ArrayList<String>();
-        feature.add("United States");
-        feature.add("Spain");
-        feature.add("Argentina");
-        feature.add("France");
-        feature.add("Russia");
+//        feature.add("United States");
+//        feature.add("Spain");
+//        feature.add("Argentina");
+//        feature.add("France");
+//        feature.add("Russia");
 
-        expandableListDetail.put("LIVE", live);
-        expandableListDetail.put("FOOTBALL TEAMS", popular);
-        expandableListDetail.put("Category", feature);
+        expandableListDetail.put("About", feature);
+        expandableListDetail.put("Category", popular);
+        expandableListDetail.put("My News", live);
         return expandableListDetail;
     }
 }

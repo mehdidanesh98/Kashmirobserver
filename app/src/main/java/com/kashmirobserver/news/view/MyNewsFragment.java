@@ -66,7 +66,26 @@ public class MyNewsFragment extends Fragment {
         settingNetwork = (LinearLayout) rootView.findViewById(R.id.layout_setting_network);
         againButton = (Button) rootView.findViewById(R.id.btn_try_again);
         txtSettingNetwork = (TextView) rootView.findViewById(R.id.btn_setting_network);
+
+        overview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getNews();
+                if(CategoryManagment.getManCategory(getContext()).size()>0);
+                    overview.setVisibility(View.GONE);
+            }
+        });
+
         getNews();
+
+        refreshLayout.setColorSchemeResources(R.color.colorAccent);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getNews();
+                refreshLayout.setRefreshing(false);
+            }
+        });
 
         return rootView;
     }
